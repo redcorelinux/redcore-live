@@ -1,0 +1,12 @@
+[Unit]
+Description=Graphical Starter Config File
+After=kogaionlive.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=false
+ExecStart=/usr/libexec/graphical_start.sh
+
+[Install]
+Alias=graphical_start.service
+WantedBy=multi-user.target

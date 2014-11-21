@@ -1,0 +1,10 @@
+#!/bin/sh
+
+ROGENTOS_LOADER="/usr/bin/xdg-open"
+ROGENTOS_URL=${ROGENTOS_URL:-http://www.kogaion.ro?install_welcome=1}
+
+# load Sabayon URL
+[[ -x "${ROGENTOS_LOADER}" ]] && ${ROGENTOS_LOADER} ${ROGENTOS_URL} &
+
+# remove myself from autostart
+rm ~/.config/autostart/kogaion-welcome-loader.desktop -f

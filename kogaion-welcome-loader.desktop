@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=kogaion-loader
+Exec=kogaion-welcome-loader
+Icon=system-run
+Comment=Kogaion Linux post-install Welcome Screen
+Terminal=false

@@ -1,0 +1,13 @@
+#!/sbin/runscript
+# Copyright 2013 Argent and Argent
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	after kogaionlive
+}
+
+start() {
+	ebegin "Starting the Graphical Interface"
+	/usr/libexec/graphical_start.sh
+	eend $?
+}
