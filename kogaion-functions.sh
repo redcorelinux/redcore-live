@@ -128,11 +128,7 @@ kogaion_setup_motd() {
 }
 
 kogaion_setup_vt_autologin() {
-	if openrc_running; then
-		. /sbin/livecd-functions.sh
-		export CDBOOT=1
-		livecd_fix_inittab
-	elif systemd_running; then
+	if systemd_running; then
 		cp /usr/lib/systemd/system/getty@.service \
 			/etc/systemd/system/autologin@.service
 		sed -i "/^ExecStart=/ s:/sbin/agetty:/sbin/agetty --autologin root:g" \
@@ -220,13 +216,6 @@ kogaion_fixup_gnome_autologin_session() {
 }
 
 kogaion_setup_text_installer() {
-	if openrc_running; then
-		# switch to verbose mode
-		splash_manager -c set -t default -m v &> /dev/null
-		reset
-		chvt 1
-		clear
-	fi
 	kogaion_setup_text_installer_motd
 }
 
@@ -277,8 +266,4 @@ kogaion_is_normal_boot() {
 
 systemd_running() {
 	test -d /run/systemd/system
-}
-
-openrc_running() {
-	test -e /run/openrc/softlevel
 }
