@@ -1,5 +1,5 @@
 [Unit]
-Description=Argent text installer setup
+Description=Kogaion text installer setup
 After=kogaionlive.service
 
 [Service]

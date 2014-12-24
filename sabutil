@@ -376,7 +376,7 @@ function horner
 {
 
 # Quick system info gatherer written for Sabayon GNU/Linux and
-# adapted for Argent and Argent GNU/Linux
+# adapted for Kogaion and Argent GNU/Linux
 #(http://kogaion.ro)
 # Copyright 2008 Richard Edward Horner
 # Last modified 2008-11-26

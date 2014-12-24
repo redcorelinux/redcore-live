@@ -1,5 +1,5 @@
 [Unit]
-Description=Argent live system setup
+Description=Kogaion live system setup
 Before=display-manager.service getty.target
 
 [Service]
