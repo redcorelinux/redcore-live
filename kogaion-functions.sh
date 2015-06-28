@@ -10,7 +10,7 @@ OEM_FILE_NEW="/etc/oem/liveboot.sh"
 LIVE_USER_GROUPS="audio bumblebee cdrom cdrw clamav console entropy games \
 kvm lp lpadmin messagebus plugdev polkituser portage pulse pulse-access pulse-rt \
 scanner usb users uucp vboxguest vboxusers video wheel"
-LIVE_USER=${ROGENTOS_USER:-kogaionuser}
+LIVE_USER=${KOGAION_USER:-kogaionuser}
 
 kogaion_setup_autologin() {
 	# GDM - GNOME
@@ -62,6 +62,9 @@ kogaion_setup_autologin() {
 	if [ -f "$LIGHTDM_FILE" ]; then
 		sed -i "s/autologin-user=.*/autologin-user=${LIVE_USER}/" $LIGHTDM_FILE
 		sed -i "/^#.*autologin-user=/ s/^#//" $LIGHTDM_FILE
+		sed -i "s/pam-service=.*/pam-service=lightdm-autologin/" $LIGHTDM_FILE
+		sed -i "/^#.*pam-service=/ s/^#//" $LIGHTDM_FILE
+		sed -i "/^#.*autologin-user-timeout=/ s/^#//" $LIGHTDM_FILE
 	fi
 
 	# Setup correct login session
