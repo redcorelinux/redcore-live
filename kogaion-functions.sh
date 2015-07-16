@@ -65,7 +65,6 @@ kogaion_setup_autologin() {
 		sed -i "s/pam-service=.*/pam-service=lightdm-autologin/" $LIGHTDM_FILE
 		sed -i "/^#.*pam-service=/ s/^#//" $LIGHTDM_FILE
 		sed -i "/^#.*autologin-user-timeout=/ s/^#//" $LIGHTDM_FILE
-		ln -s /etc/lightdm /etc/lightdm-base
 	fi
 
 	# Setup correct login session
