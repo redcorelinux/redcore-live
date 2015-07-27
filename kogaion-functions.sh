@@ -9,7 +9,7 @@ OEM_FILE="/etc/oemlive.sh"
 OEM_FILE_NEW="/etc/oem/liveboot.sh"
 LIVE_USER_GROUPS="audio bumblebee cdrom cdrw clamav console entropy games \
 kvm lp lpadmin messagebus plugdev polkituser portage pulse pulse-access pulse-rt \
-scanner usb users uucp vboxguest vboxusers video wheel"
+scanner usb users uucp vboxguest vboxusers vboxsf video wheel "
 LIVE_USER=${KOGAION_USER:-kogaionuser}
 
 kogaion_setup_autologin() {
