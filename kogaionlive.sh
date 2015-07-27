@@ -34,7 +34,7 @@ setup_desktop() {
         chown ${LIVE_USER}:users /home/${LIVE_USER} -R
     fi
 
-    local liveinst_desktop="/usr/share/applications/liveinst.desktop"
+    local liveinst_desktop="/usr/share/applications/calamares.desktop"
     local liveinst_desktop_name="$(basename ${liveinst_desktop})"
     if [ -f "${liveinst_desktop}" ]; then
         [[ -d "/home/${LIVE_USER}/Desktop" ]] || \

@@ -43,6 +43,7 @@ install:
 
 	install -d $(DESTDIR)/$(SYSCONFDIR)/kogaion
 	install -m 0644 kogaion-welcome-loader.desktop $(DESTDIR)/$(SYSCONFDIR)/kogaion
+	install -m 0644 calamares.desktop $(DESTDIR)/$(SYSCONFDIR)/kogaion
 
 	install -d $(DESTDIR)/$(SYSTEMD_UNITDIR)/
 	install -m 0644 *.service $(DESTDIR)/$(SYSTEMD_UNITDIR)/

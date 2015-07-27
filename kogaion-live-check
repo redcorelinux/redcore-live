@@ -24,4 +24,4 @@ dd if=/dev/cdrom bs=$BLOCK_SIZE count=$VOL_SIZE conv=notrunc,noerror | md5sum
 
 echo "Compare the above value with the value supplied in"
 echo "the release notes for this version at:"
-echo "http://www.kogaion.ro/"
+echo "http://www.rogentos.ro/"
