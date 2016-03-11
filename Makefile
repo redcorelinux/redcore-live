@@ -19,7 +19,6 @@ install:
 	for d in $(SUBDIRS); do $(MAKE) -C $$d install; done
 
 	install -d $(DESTDIR)/$(LIBEXECDIR)
-	install -m 0755 graphical_start.sh ${DESTDIR}/${LIBEXECDIR}/
 
 	install -d $(DESTDIR)/$(SBINDIR)
 	install -d $(DESTDIR)/$(BINDIR)
@@ -29,7 +28,5 @@ install:
 	install -d $(DESTDIR)/$(UBINDIR)
 
 	install -d $(DESTDIR)/$(SYSCONFDIR)/kogaion
-	install -m 0644 calamares.desktop $(DESTDIR)/$(SYSCONFDIR)/kogaion
 
 	install -d $(DESTDIR)/$(SYSTEMD_UNITDIR)/
-	install -m 0644 *.service $(DESTDIR)/$(SYSTEMD_UNITDIR)/
