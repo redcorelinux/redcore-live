@@ -12,7 +12,7 @@ checkroot () {
 }
 
 kogaion_add_live_user() {
-	/usr/sbin/useradd -u 10000 -g 100 -o -m -s /bin/bash "$liveuser" > /dev/null 2>&1
+	/usr/sbin/useradd -u 1000 -g 100 -o -m -s /bin/bash "$liveuser" > /dev/null 2>&1
 }
 
 kogaion_live_user_groups() {
