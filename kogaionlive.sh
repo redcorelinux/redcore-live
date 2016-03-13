@@ -8,7 +8,7 @@ checkroot () {
 		echo "You're not root?...No cookies for you, go away !!!"
 		echo ""
 		exit 1
-    fi
+	fi
 }
 
 kogaion_add_live_user() {
