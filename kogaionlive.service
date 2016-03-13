@@ -1,0 +1,11 @@
+[Unit]
+Description=Kogaion live user setup
+Before=display-manager.service getty.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+ExecStart=/usr/libexec/kogaionlive.sh
+
+[Install]
+WantedBy=multi-user.target
