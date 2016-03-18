@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 export local liveuser="kogaion"
-CMDLINE=$(cat /proc/cmdline 2> /dev/null)
+export local CMDLINE=$(cat /proc/cmdline 2> /dev/null)
 
 checkroot () {
 	if [[ "$(whoami)" != root ]] ; then
@@ -27,27 +27,20 @@ kogaion_live_user_password () {
 }
 
 kogaion_locale_switch () {
-	local lang_toset=
-	local keymap_toset=
-	local k_env_update=false
-	for boot_param in ${CMDLINE}; do
-		case ${boot_param} in
+	for boot_param in "$CMDLINE"; do
+		case "$boot_param" in
 			rd.locale.LANG=*)
-                lang_toset="${boot_param/*=}"
-                ;;
-            vconsole.keymap=*)
-                keymap_toset="${boot_param/*=}"
-                ;;
-        esac
-    done
-	if [[ "${lang_toset}" != "en_US.utf8" ]] ; then
-		localectl set-locale LANG=${lang_toset} > /dev/null 2>&1
-		k_env_update=true
-	fi
-	if [[ "${keymap_toset}" != "us" ]] ; then
-		localectl set-keymap ${keymap_toset} > /dev/null 2>&1
-	fi
-	if [ k_env_update ] ; then 
+				export local lang_toset=""$boot_param"/*="
+				;;
+			vconsole.keymap=*)
+				export local keymap_toset=""$boot_param"/*="
+				;;
+		esac
+	done
+	
+	if [[ "$lang_toset" != "en_US.utf8" ]] || [[ "$keymap_toset" != "us" ]] ; then
+		localectl set-locale LANG="$lang_toset" > /dev/null 2>&1
+		localectl set-keymap "$keymap_toset" > /dev/null 2>&1
 		/usr/sbin/env-update --no-ldconfig > /dev/null 2>&1
 	fi
 }
