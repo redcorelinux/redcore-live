@@ -44,7 +44,7 @@ kogaion_locale_switch () {
 		localectl set-locale LANG=${lang_toset} > /dev/null 2>&1
 		k_env_update=true
 	fi
-	if [[ "${lang_toset}" != "us" ]] ; then
+	if [[ "${keymap_toset}" != "us" ]] ; then
 		localectl set-keymap ${keymap_toset} > /dev/null 2>&1
 	fi
 	if [ k_env_update ] ; then 
