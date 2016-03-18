@@ -39,8 +39,8 @@ kogaion_locale_switch () {
 	done
 	
 	if [[ "$lang_toset" != "en_US.utf8" ]] || [[ "$keymap_toset" != "us" ]] ; then
-		localectl set-locale LANG="$lang_toset" > /dev/null 2>&1
-		localectl set-keymap "$keymap_toset" > /dev/null 2>&1
+		/usr/bin/localectl set-locale LANG="$lang_toset" > /dev/null 2>&1
+		/usr/bin/localectl set-keymap "$keymap_toset" > /dev/null 2>&1
 		/usr/sbin/env-update --no-ldconfig > /dev/null 2>&1
 	fi
 }
