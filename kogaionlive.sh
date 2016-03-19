@@ -25,7 +25,7 @@ kogaion_live_user_password () {
 	/usr/bin/passwd --delete "$liveuser" > /dev/null 2>&1
 }
 
-kogaion_locale_switch () {
+kogaion_live_locale_switch () {
 	export local keymap_toset="$(cat /proc/cmdline | cut -d " " -f12 | cut -d "=" -f2)"
 	export local lang_toset="$(cat /proc/cmdline | cut -d " " -f13 | cut -d "=" -f2)"
 	if [[ "$lang_toset" != "en_US.utf8" ]] || [[ "$keymap_toset" != "us" ]] ; then
@@ -38,10 +38,10 @@ kogaion_locale_switch () {
 
 main () {
 	if checkroot ; then
-		kogaion_locale_switch
 		kogaion_add_live_user
 		kogaion_live_user_groups
 		kogaion_live_user_password
+		kogaion_live_locale_switch
 	fi
 }
 
