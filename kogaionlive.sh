@@ -4,16 +4,13 @@ export local liveuser="kogaion"
 
 checkroot () {
 	if [[ "$(whoami)" != root ]] ; then
-		echo ""
-		echo "You're not root?...No cookies for you, go away !!!"
-		echo ""
+		echo "No root, no play! Bye bye!"
 		exit 1
 	fi
 }
 
 kogaion_is_live() {
 	if [[ ! -L "/dev/mapper/live-rw" ]] ; then
-		echo ""
 		echo "The system is not running in live mode, aborting!"
 		exit 1
 	fi
