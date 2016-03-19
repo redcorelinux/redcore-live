@@ -11,6 +11,14 @@ checkroot () {
 	fi
 }
 
+kogaion_is_live() {
+	if [[ ! -L "/dev/mapper/live-rw" ]] ; then
+		echo ""
+		echo "The system is not running in live mode, aborting!"
+		exit 1
+	fi
+}
+
 kogaion_add_live_user() {
 	/usr/sbin/useradd -u 1000 -g 100 -o -m -s /bin/bash "$liveuser" > /dev/null 2>&1
 }
@@ -37,7 +45,7 @@ kogaion_live_locale_switch () {
 
 
 main () {
-	if checkroot ; then
+	if checkroot && kogaion_is_live ; then
 		kogaion_add_live_user
 		kogaion_live_user_groups
 		kogaion_live_user_password
