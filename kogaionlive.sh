@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 export local liveuser="kogaion"
-export local CMDLINE=$(cat /proc/cmdline 2> /dev/null)
 
 checkroot () {
 	if [[ "$(whoami)" != root ]] ; then
@@ -27,17 +26,8 @@ kogaion_live_user_password () {
 }
 
 kogaion_locale_switch () {
-	for boot_param in "$CMDLINE"; do
-		case "$boot_param" in
-			rd.locale.LANG=*)
-				export local lang_toset=""$boot_param"/*="
-				;;
-			vconsole.keymap=*)
-				export local keymap_toset=""$boot_param"/*="
-				;;
-		esac
-	done
-	
+	export local keymap_toset="$(cat /proc/cmdline | cut -d " " -f12 | cut -d "=" -f2)"
+	export local lang_toset="$(cat /proc/cmdline | cut -d " " -f13 | cut -d "=" -f2)"
 	if [[ "$lang_toset" != "en_US.utf8" ]] || [[ "$keymap_toset" != "us" ]] ; then
 		/usr/bin/localectl set-locale LANG="$lang_toset" > /dev/null 2>&1
 		/usr/bin/localectl set-keymap "$keymap_toset" > /dev/null 2>&1
