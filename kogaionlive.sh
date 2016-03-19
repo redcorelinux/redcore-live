@@ -2,7 +2,7 @@
 
 export local liveuser="kogaion"
 
-checkroot () {
+checkroot() {
 	if [[ "$(whoami)" != root ]] ; then
 		echo "No root, no play! Bye bye!"
 		exit 1
@@ -26,11 +26,11 @@ kogaion_live_user_groups() {
 	done
 }
 
-kogaion_live_user_password () {
+kogaion_live_user_password() {
 	/usr/bin/passwd --delete "$liveuser" > /dev/null 2>&1
 }
 
-kogaion_live_locale_switch () {
+kogaion_live_locale_switch() {
 	export local keymap_toset="$(cat /proc/cmdline | cut -d " " -f12 | cut -d "=" -f2)"
 	export local lang_toset="$(cat /proc/cmdline | cut -d " " -f13 | cut -d "=" -f2)"
 	if [[ "$lang_toset" != "en_US.utf8" ]] || [[ "$keymap_toset" != "us" ]] ; then
@@ -40,12 +40,18 @@ kogaion_live_locale_switch () {
 	fi
 }
 
+kogaion_live_installer_desktop() {
+	cp "/usr/share/applications/calamares.desktop" "/home/"$liveuser"/Desktop"
+	sed -i "s/"Name=Calamares"/"Name=Kogaion\ Installer"/g" "/home/"$liveuser"/Desktop/calamares.desktop"
+	chmod 755 "/home/"$liveuser"/Desktop/calamares.desktop"
+}
 
-main () {
+main() {
 	if checkroot && kogaion_is_live ; then
 		kogaion_add_live_user
 		kogaion_live_user_groups
 		kogaion_live_user_password
+		kogaion_live_installer_desktop
 		kogaion_live_locale_switch
 	fi
 }
