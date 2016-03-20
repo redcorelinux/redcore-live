@@ -31,8 +31,8 @@ kogaion_live_user_password() {
 }
 
 kogaion_live_locale_switch() {
-	export local keymap_toset="$(cat /proc/cmdline | cut -d " " -f12 | cut -d "=" -f2)"
-	export local lang_toset="$(cat /proc/cmdline | cut -d " " -f13 | cut -d "=" -f2)"
+	export local keymap_toset="$(cat /proc/cmdline | cut -d " " -f5 | cut -d "=" -f2)"
+	export local lang_toset="$(cat /proc/cmdline | cut -d " " -f6 | cut -d "=" -f2)"
 	if [[ "$lang_toset" != "en_US.utf8" ]] || [[ "$keymap_toset" != "us" ]] ; then
 		/usr/bin/localectl set-locale LANG="$lang_toset" > /dev/null 2>&1
 		/usr/bin/localectl set-keymap "$keymap_toset" > /dev/null 2>&1
@@ -58,4 +58,3 @@ main() {
 
 main
 exit 0
-	
