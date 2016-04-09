@@ -21,7 +21,7 @@ kogaion_add_live_user() {
 }
 
 kogaion_live_user_groups() {
-	for group in tty disk lp wheel uucp console audio cdrom tape video cdrw usb plugdev messagebus portage ; do
+	for group in tty disk lp wheel uucp console audio cdrom tape video cdrw usb plugdev messagebus portage vboxsf vboxguest ; do
 		gpasswd -a "$liveuser" "$group" > /dev/null 2>&1
 	done
 }
