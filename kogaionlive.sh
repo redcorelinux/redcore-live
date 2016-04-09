@@ -27,7 +27,7 @@ kogaion_live_user_groups() {
 }
 
 kogaion_live_user_password() {
-	/usr/bin/passwd --delete "$liveuser" > /dev/null 2>&1
+	echo "$liveuser":"$liveuser" | /usr/sbin/chpasswd > /dev/null 2>&1
 }
 
 kogaion_live_locale_switch() {
