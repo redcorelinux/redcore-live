@@ -5,7 +5,7 @@ Before=display-manager.service getty.target
 [Service]
 Type=oneshot
 RemainAfterExit=true
-ExecStart=/usr/libexec/kogaionlive.sh
+ExecStart=/usr/libexec/redcorelive.sh
 
 [Install]
 WantedBy=multi-user.target

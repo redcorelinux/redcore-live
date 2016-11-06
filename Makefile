@@ -19,6 +19,6 @@ install:
 	for d in $(SUBDIRS); do $(MAKE) -C $$d install; done
 
 	install -d $(DESTDIR)/$(LIBEXECDIR)
-	install -m 0755 kogaionlive.sh $(DESTDIR)/$(LIBEXECDIR)/
+	install -m 0755 redcorelive.sh $(DESTDIR)/$(LIBEXECDIR)/
 	install -d $(DESTDIR)/$(SYSTEMD_UNITDIR)/
-	install -m 0644 kogaionlive.service $(DESTDIR)/$(SYSTEMD_UNITDIR)/
+	install -m 0644 redcorelive.service $(DESTDIR)/$(SYSTEMD_UNITDIR)/
