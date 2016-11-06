@@ -42,7 +42,7 @@ redcore_live_locale_switch() {
 
 redcore_live_installer_desktop() {
 	cp "/usr/share/applications/calamares.desktop" "/home/"$liveuser"/Desktop"
-	sed -i "s/"Name=Calamares"/"Name=Kogaion\ Installer"/g" "/home/"$liveuser"/Desktop/calamares.desktop"
+	sed -i "s/"Name=Calamares"/"Name=Redcore\ Installer"/g" "/home/"$liveuser"/Desktop/calamares.desktop"
 	chmod 755 "/home/"$liveuser"/Desktop/calamares.desktop"
 }
 
