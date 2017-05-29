@@ -1,0 +1,14 @@
+#!/sbin/openrc-run
+# Copyright 2017 Redcore Linux Project
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	after localmount
+	before keymaps
+}
+
+start() {
+	ebegin "Setting up live user"
+		/usr/libexec/redcorelive-openrc.sh
+	eend $?
+}
