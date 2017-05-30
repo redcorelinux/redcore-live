@@ -22,7 +22,7 @@ redcore_add_live_user() {
 
 redcore_live_user_groups() {
 	for group in tty disk lp wheel uucp console audio cdrom tape kvm cdemu video cdrw usb plugdev messagebus portage ; do
-		gpasswd -a "$liveuser" "$group" > /dev/null 2>&1
+		/usr/bin/gpasswd -a "$liveuser" "$group" > /dev/null 2>&1
 	done
 }
 
@@ -34,8 +34,11 @@ redcore_live_locale_switch() {
 	export local keymap_toset="$(cat /proc/cmdline | cut -d " " -f5 | cut -d "=" -f2)"
 	export local lang_toset="$(cat /proc/cmdline | cut -d " " -f6 | cut -d "=" -f2)"
 	if [[ "$lang_toset" != "en_US.utf8" ]] || [[ "$keymap_toset" != "us" ]] ; then
-		export LANG="$lang_toset" > /dev/null 2>&1
 		sed -i "s/keymap=\"us\"/keymap=\"$keymap_toset\"/g" /etc/conf.d/keymaps > /dev/null 2>&1
+		/usr/bin/eselect locale set "$lang_toset" > /dev/null 2>&1
+		/usr/sbin/env-update --no-ldconfig > /dev/null 2>&1
+	else
+		/usr/bin/eselect locale set "en_US.utf8" > /dev/null 2>&1
 		/usr/sbin/env-update --no-ldconfig > /dev/null 2>&1
 	fi
 }
