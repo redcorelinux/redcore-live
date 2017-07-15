@@ -21,7 +21,7 @@ redcore_add_live_user() {
 }
 
 redcore_live_user_groups() {
-	for group in tty disk lp wheel uucp console audio cdrom tape kvm cdemu video vboxsf vboxguest cdrw usb plugdev messagebus portage ; do
+	for group in tty disk lp wheel uucp console audio cdrom tape kvm cdemu games video vboxsf vboxguest cdrw usb plugdev messagebus portage ; do
 		gpasswd -a "$liveuser" "$group" > /dev/null 2>&1
 	done
 }
