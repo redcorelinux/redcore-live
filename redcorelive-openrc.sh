@@ -35,6 +35,7 @@ redcore_live_locale_switch() {
 	export local lang_toset="$(cat /proc/cmdline | cut -d " " -f6 | cut -d "=" -f2)"
 	if [[ "$lang_toset" != "en_US.utf8" ]] || [[ "$keymap_toset" != "us" ]] ; then
 		sed -i "s/keymap=\"us\"/keymap=\"$keymap_toset\"/g" /etc/conf.d/keymaps > /dev/null 2>&1
+		setxkbmap $keymap_toset
 		/usr/bin/eselect locale set "$lang_toset" > /dev/null 2>&1
 		/usr/sbin/env-update --no-ldconfig > /dev/null 2>&1
 	else
