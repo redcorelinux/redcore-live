@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-export local liveuser="redcorelive"
+export local liveuser="redcore"
+export local livepasswd="redcore_live"
 
 checkroot() {
 	if [[ "$(whoami)" != root ]] ; then
@@ -27,7 +28,7 @@ redcore_live_user_groups() {
 }
 
 redcore_live_user_password() {
-	echo "$liveuser":"$liveuser" | /usr/sbin/chpasswd > /dev/null 2>&1
+	echo "$liveuser":"$livepasswd" | /usr/sbin/chpasswd > /dev/null 2>&1
 }
 
 redcore_live_locale_switch() {
