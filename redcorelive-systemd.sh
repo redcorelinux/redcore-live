@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-export local liveuser="redcore"
+export local liveuser="redcorelive"
 
 checkroot() {
 	if [[ "$(whoami)" != root ]] ; then
