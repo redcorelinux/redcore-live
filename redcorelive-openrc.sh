@@ -27,8 +27,8 @@ livePasswd() {
 }
 
 liveLogin() {
-	sed -e "0,/User=/s//User=redcore/" -e "0,/Session=/s//Session=plasma/" /etc/sddm.conf | tee /etc/sddm.conf.live  > /dev/null 2>&1
-	mv /etc/sddm.conf.live /etc/sddm.conf  > /dev/null 2>&1
+	sed -e "0,/User=/s//User=redcore/" -e "0,/Session=/s//Session=plasma/" /etc/sddm.conf.d/00redcore.conf | tee /etc/sddm.conf.live  > /dev/null 2>&1
+	mv /etc/sddm.conf.live /etc/sddm.conf.d/00redcore.conf  > /dev/null 2>&1
 }
 
 liveLocales() {
