@@ -27,7 +27,9 @@ livePasswd() {
 }
 
 liveLogin() {
-	if [[ -e "/usr/share/xsessions/qtile.desktop" ]] ; then
+	if [[ -e "/usr/share/xsessions/lxqt.desktop" ]] ; then
+		sed -e "0,/User=/s//User=redcore/" -e "0,/Session=/s//Session=lxqt/" /etc/sddm.conf.d/00redcore.conf | tee /etc/sddm.conf.live  > /dev/null 2>&1
+	elif [[ -e "/usr/share/xsessions/qtile.desktop" ]] ; then
 		sed -e "0,/User=/s//User=redcore/" -e "0,/Session=/s//Session=qtile/" /etc/sddm.conf.d/00redcore.conf | tee /etc/sddm.conf.live  > /dev/null 2>&1
 	elif [[ -e "/usr/share/wayland-sessions/plasma.desktop" ]] ; then
 		sed -e "0,/User=/s//User=redcore/" -e "0,/Session=/s//Session=plasma/" /etc/sddm.conf.d/00redcore.conf | tee /etc/sddm.conf.live  > /dev/null 2>&1
